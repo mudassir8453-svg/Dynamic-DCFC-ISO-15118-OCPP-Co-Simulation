@@ -24,9 +24,9 @@ This repository adapts a validated MathWorks baseline model, modifying the contr
 1.  **Start the Backend:** Launch your SteVe OCPP server and ensure it is listening on the designated port.
 2.  **Initialize the Bridge:** Run the Python UDP script to open the local socket.
     ```bash
-    python ocpp_udp_bridge.py
+    python ocpp_bridge.py
     ```
-3.  **Load Parameters:** Open MATLAB and run the `charger_config.m` script to load the 10 kHz switching frequency, 800V bus targets, and PI gains into the workspace.
+3.  **Load Parameters:** Open MATLAB and run the `params_all_evs.m` script to load the 10 kHz switching frequency, 800V bus targets, and PI gains into the workspace.
 4.  **Run Simulation:** Open `DCFastCharger.slx` and start the simulation. The Python terminal will log the dynamic current limits being passed to the active Stateflow chart.
 
 ## Acknowledgements
