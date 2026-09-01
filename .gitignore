@@ -1,0 +1,6 @@
+# MATLAB, Python, and Simulink Cache exclusions
+*.slxc
+*.asv
+__pycache__/
+*.pyc
+*.mat
