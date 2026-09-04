@@ -28,6 +28,15 @@ This repository adapts a validated MathWorks baseline model, modifying the contr
     ```
 3.  **Load Parameters:** Open MATLAB and run the `params_all_evs.m` script to load the 10 kHz switching frequency, 800V bus targets, and PI gains into the workspace.
 4.  **Run Simulation:** Open `DCFastCharger.slx` and start the simulation. The Python terminal will log the dynamic current limits being passed to the active Stateflow chart.
+5.  ## Scope, Assumptions & Protocol Deviations
+
+To facilitate a stable Software-in-the-Loop (SIL) environment focused on steady-state power electronics and OCPP cloud telemetry, several physical layer and low-level protocol sequences have been intentionally abstracted:
+
+* **Abstracted ISO 15118 Handshake:** The SECC-EVCC communication stages (Service Discovery, Charge Parameter Discovery) are modeled as sequential Stateflow transitions rather than handling raw EXI-encoded XML messages over a simulated HomePlug Green PHY link.
+* **Static Vehicle Selection:** EV battery parameters (capacity, voltage limits) are injected via a local MATLAB workspace UI dropdown, rather than being dynamically requested from the EV BMS over the charging cable.
+* **Continuous Connection State:** The `PlugConnected` boolean is hardcoded to `True` (1) to bypass physical plug-in sequencing (Control Pilot states) and allow continuous looped testing of the OCPP telemetry.
+* **Simplified Authentication:** OCPP authorization uses a static EV tag defined in the initialization script rather than simulating a dynamic RFID swipe or ISO 15118-20 Plug & Charge (PnC) cryptographic certificate exchange.
+* **Inverted CC-CV Logic:** In a real-world scenario, the EV calculates its current demand and requests it from the charger. In this SIL model, the charger's Stateflow calculates the charging taper internally based on the streamed EV SOC to simplify the control loop.
 
 ## Acknowledgements
 The baseline electrical topology was adapted from the MathWorks "DC Fast Charger for Electric Vehicle" example. The control loops, Stateflow state machines, and Python OCPP integration were custom-engineered for this SIL implementation.
