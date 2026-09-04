@@ -28,7 +28,7 @@ This repository adapts a validated MathWorks baseline model, modifying the contr
     ```
 3.  **Load Parameters:** Open MATLAB and run the `params_all_evs.m` script to load the 10 kHz switching frequency, 800V bus targets, and PI gains into the workspace.
 4.  **Run Simulation:** Open `DCFastCharger.slx` and start the simulation. The Python terminal will log the dynamic current limits being passed to the active Stateflow chart.
-5.  ## Scope, Assumptions & Protocol Deviations
+  ## Scope, Assumptions & Protocol Deviations
 
 To facilitate a stable Software-in-the-Loop (SIL) environment focused on steady-state power electronics and OCPP cloud telemetry, several physical layer and low-level protocol sequences have been intentionally abstracted:
 
